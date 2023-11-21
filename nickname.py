@@ -1,8 +1,10 @@
+import sqlite3
 from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
-from cryptography.hazmat.primitives import serialization, hashes
-import getpass
+from cryptography.hazmat.primitives import hashes
 import hashlib
+import getpass
 
 # Function to securely get user input (masked password)
 def get_secure_input(prompt):
@@ -20,7 +22,6 @@ def generate_rsa_key_pair():
 
 # Function to encrypt data using RSA public key
 def encrypt_data(data, public_key):
-    # Use RSA encryption for securely encrypting the data
     cipher_text = public_key.encrypt(
         data.encode(),
         padding.OAEP(
@@ -33,7 +34,6 @@ def encrypt_data(data, public_key):
 
 # Function to decrypt data using RSA private key
 def decrypt_data(cipher_text, private_key):
-    # Use RSA decryption for securely decrypting the data
     plain_text = private_key.decrypt(
         cipher_text,
         padding.OAEP(
@@ -43,6 +43,39 @@ def decrypt_data(cipher_text, private_key):
         )
     ).decode()
     return plain_text
+
+# Function to create a SQLite database connection
+def create_connection():
+    return sqlite3.connect("encrypted_data.db")
+
+# Function to create a table in the database
+def create_table(conn):
+    sql_create_table = """
+    CREATE TABLE IF NOT EXISTS user_data (
+        user_id BLOB,
+        encrypted_user_password BLOB,
+        public_key BLOB
+    );
+    """
+    try:
+        c = conn.cursor()
+        c.execute(sql_create_table)
+        conn.commit()
+    except Exception as e:
+        print(f"Error creating table: {e}")
+
+# Function to insert encrypted data into the database
+def insert_data(conn, user_id, encrypted_user_password, public_key):
+    sql_insert_data = """
+    INSERT INTO user_data (user_id, encrypted_user_password, public_key)
+    VALUES (?, ?, ?);
+    """
+    try:
+        c = conn.cursor()
+        c.execute(sql_insert_data, (user_id, encrypted_user_password, public_key))
+        conn.commit()
+    except Exception as e:
+        print(f"Error inserting data: {e}")
 
 # Main function
 def main():
@@ -80,21 +113,12 @@ def main():
     print("User password encrypted successfully.")
 
     # Store the encrypted_user_id, encrypted_user_password, and public_key in the database
-    # ...
+    connection = create_connection()
+    create_table(connection)
+    insert_data(connection, encrypted_user_id, encrypted_user_password, public_key)
+    connection.close()
 
-    # Decrypt the user ID and password for verification (just for illustration purposes)
-    decrypted_user_id = decrypt_data(encrypted_user_id, private_key)
-    print("Decrypted User ID:", decrypted_user_id)
-
-    decrypted_user_password = cipher_suite.decrypt(
-        encrypted_user_password,
-        padding.OAEP(
-            mgf=padding.MGF1(algorithm=hashes.SHA256()),  # Use SHA256 for MGF
-            algorithm=hashes.SHA256(),  # Use SHA256 for OAEP
-            label=None
-        )
-    ).decode()
-    print("Decrypted User Password:", decrypted_user_password)
+    print("Encrypted data stored in the database.")
 
 if __name__ == "__main__":
     main()
