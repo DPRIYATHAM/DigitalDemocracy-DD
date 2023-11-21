@@ -7,11 +7,6 @@ In the current landscape of democratic processes, Electronic Voting Machines (EV
 ## Solution
 Digital Democracy is a comprehensive solution aimed at revolutionizing the democratic voting process. By addressing challenges such as political interference, time-consuming procedures, and user unfamiliarity with technology, DD ensures a secure, efficient, and user-friendly voting experience. The project incorporates cutting-edge technologies, including blockchain, advanced encryption, and innovative algorithms, to enhance transparency, security, and accessibility in democratic elections.
 
-**Project Title: DemocracyGuard: Reinventing Secure and Accessible Voting Systems for Modern Elections**
-
-**Project Overview:**
-DemocracyGuard is a comprehensive solution aimed at revolutionizing the democratic voting process. By addressing challenges such as political interference, time-consuming procedures, and user unfamiliarity with technology, DemocracyGuard ensures a secure, efficient, and user-friendly voting experience. The project incorporates cutting-edge technologies, including blockchain, advanced encryption, and innovative algorithms, to enhance transparency, security, and accessibility in democratic elections.
-
 **Key Features:**
 
 1. **OTP-Based Phone Authentication:**
