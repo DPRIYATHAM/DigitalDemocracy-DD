@@ -110,6 +110,7 @@ else:
    - In short a centralized data at the Central Election Commission of India from multiple decentralized constituency.
    - Ensures a user votes exactly once but not more than once through smart contracts.
    - Synchronous, user can't vote from web app and again come to booth and vote.
+   - [Algorithm](https://github.com/DPRIYATHAM/sp1r1t/blob/main/blockchain_algo.py)
 
 ### User
 - Login
