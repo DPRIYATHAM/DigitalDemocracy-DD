@@ -3,7 +3,10 @@
 
 ## Problem Statement
 In the current landscape of democratic processes, Electronic Voting Machines (EVMs) face challenges related to political interference, lengthy voting procedures, and potential user unfamiliarity with technology. The hackathon challenge is to design a secure and efficient voting system that addresses these issues. Key objectives include mitigating political interference through robust encryption, streamlining the voting process to reduce time, creating a user-friendly interface for mobile and web applications, ensuring transparency in the voting mechanism, and integrating secure methods for voters to cast their votes through digital platforms. Evaluation criteria will focus on the effectiveness of security measures, the efficiency of the system, user experience, and overall transparency in the electoral process. The goal is to foster innovation and develop a voting system that is both secure and accessible, meeting the demands of modern democratic elections.
-
+*Issues facing currently:*
+- Long Queues
+- EVM Security
+- Transparency
 ## Solution
 Digital Democracy is a comprehensive solution aimed at revolutionizing the democratic voting process. By addressing challenges such as political interference, time-consuming procedures, and user unfamiliarity with technology, DD ensures a secure, efficient, and user-friendly voting experience. The project incorporates cutting-edge technologies, including blockchain, advanced encryption, and innovative algorithms, to enhance transparency, security, and accessibility in democratic elections.
 Long Queues Can be escaped by Random time allocation
@@ -227,9 +230,8 @@ Here are the top 5 security aspects in the "Digital Democracy" application:
 - **Multi-Factor Authentication (MFA):**
    - *Measure:* Implement MFA, including OTPs, for user and administrative logins.
    - *Rationale:* Adds an extra layer of security, minimizing the risk of unauthorized access.
- 
-
 
 Thank You
 - Team Sp1r1t
 
+Excuse us for not completing the working type or a prototype for this project as we had a End Semester Examination today Morning 9:00 - 12:00.
