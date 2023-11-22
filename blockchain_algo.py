@@ -1,14 +1,13 @@
 from flask import Flask, jsonify, request
-import hashlib
 import json
 from time import time
+from hashlib import sha256
 
 class Blockchain:
-    def _init_(self):
+    def __init__(self):
         # Initialize the blockchain with an empty chain, transactions, and a set of nodes
         self.chain = []
         self.current_transactions = []
-        self.nodes = set()
 
         # Create the genesis block
         self.new_block(previous_hash='1', proof=100)
@@ -43,7 +42,7 @@ class Blockchain:
     def hash(block):
         # Hash a block using SHA-256
         block_string = json.dumps(block, sort_keys=True).encode()
-        return hashlib.sha256(block_string).hexdigest()
+        return sha256(block_string).hexdigest()
 
     @property
     def last_block(self):
@@ -55,7 +54,7 @@ blockchain = Blockchain()
 
 @app.route('/mine', methods=['GET'])
 def mine():
-    # In a real-world scenario, you'd have a more complex PoA algorithm here
+    # In a real-world scenario, you'd have a more complex PoW algorithm here
     proof = 1
     previous_hash = blockchain.hash(blockchain.last_block)
     block = blockchain.new_block(proof, previous_hash)
@@ -98,5 +97,4 @@ def full_chain():
 if __name__ == '__main__':
     # Run the Flask application on host 0.0.0.0 and port 5000
     app.run(host='0.0.0.0', port=5000)
-
 # This is a draft algorithm for the blockchain we are creating, for demonstration purpose. 
