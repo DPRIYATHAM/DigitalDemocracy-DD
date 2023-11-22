@@ -1,4 +1,4 @@
-# Digital Democarcy - DD
+# Digital Democracy - DD
 *Empowering the Future of Voting*
 
 ## Problem Statement
