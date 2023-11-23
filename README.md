@@ -234,5 +234,3 @@ Here are the top 5 security aspects in the "Digital Democracy" application:
 
 Thank You
 - Team Sp1r1t
-
-Excuse us for not completing the working type or a prototype for this project as we had a End Semester Examination today Morning 9:00 - 12:00.
